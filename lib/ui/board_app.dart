@@ -10,6 +10,17 @@ class BoardApp extends StatefulWidget {
 }
 
 class _BoardAppState extends State<BoardApp> {
+  late TextEditingController nameInputController;
+  late TextEditingController titleInputController;
+  late TextEditingController descriptionController;
+  @override
+  void initState() {
+    super.initState();
+    nameInputController = TextEditingController();
+    titleInputController = TextEditingController();
+    descriptionController = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +28,9 @@ class _BoardAppState extends State<BoardApp> {
         title: const Text("Firbase Firestore"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          _showDialog(context);
+        },
         child: const Icon(
           FontAwesomeIcons.pen,
           color: Colors.white,
@@ -36,6 +49,72 @@ class _BoardAppState extends State<BoardApp> {
               });
         },
       ),
+    );
+  }
+
+  _showDialog(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          contentPadding: const EdgeInsets.all(10),
+          content: Column(
+            children: [
+              const Text("Please fill out the form"),
+              Expanded(
+                child: TextField(
+                  autofocus: true,
+                  autocorrect: true,
+                  decoration: const InputDecoration(
+                    labelText: "Your name",
+                  ),
+                  controller: nameInputController,
+                ),
+              ),
+              Expanded(
+                child: TextField(
+                  autofocus: true,
+                  autocorrect: true,
+                  decoration: const InputDecoration(
+                    labelText: "title",
+                  ),
+                  controller: titleInputController,
+                ),
+              ),
+              Expanded(
+                child: TextField(
+                  autofocus: true,
+                  autocorrect: true,
+                  decoration: const InputDecoration(
+                    labelText: "description",
+                  ),
+                  controller: descriptionController,
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            // ignore: deprecated_member_use
+            FlatButton(
+              onPressed: () {
+                nameInputController.clear();
+                titleInputController.clear();
+                descriptionController.clear();
+                Navigator.pop(context);
+              },
+              child: const Text("Cancel"),
+            ),
+            // ignore: deprecated_member_use
+            FlatButton(
+              onPressed: () {},
+              child: const Text(
+                "Save",
+                style: TextStyle(color: Colors.purple),
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }
