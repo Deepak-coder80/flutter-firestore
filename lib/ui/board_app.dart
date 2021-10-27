@@ -106,7 +106,26 @@ class _BoardAppState extends State<BoardApp> {
             ),
             // ignore: deprecated_member_use
             FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                if (titleInputController.text.isNotEmpty &&
+                    nameInputController.text.isNotEmpty &&
+                    descriptionController.text.isNotEmpty) {
+                  FirebaseFirestore.instance.collection('board').add({
+                    'name': nameInputController.text.toString(),
+                    'title': titleInputController.text.toString(),
+                    'description': descriptionController.text.toString(),
+                    'timestamp': DateTime.now()
+                  }).then((value) {
+                    // ignore: avoid_print
+                    print(value.id);
+                    Navigator.pop(context);
+                    nameInputController.clear();
+                    titleInputController.clear();
+                    descriptionController.clear();
+                    // ignore: avoid_print
+                  }).catchError((error) => print("error"));
+                }
+              },
               child: const Text(
                 "Save",
                 style: TextStyle(color: Colors.purple),
