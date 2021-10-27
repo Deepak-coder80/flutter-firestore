@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BoardApp extends StatefulWidget {
   const BoardApp({Key? key}) : super(key: key);
@@ -14,6 +15,13 @@ class _BoardAppState extends State<BoardApp> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Firbase Firestore"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(
+          FontAwesomeIcons.pen,
+          color: Colors.white,
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('board').snapshots(),
