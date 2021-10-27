@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "338202131263",
+    "project_id": "boardapp-6d754",
+    "storage_bucket": "boardapp-6d754.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338202131263:android:ceb0e6de128fba8475f18a",
+        "android_client_info": {
+          "package_name": "com.deepak.board_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338202131263-lduoetlhcgu9frkq2lh2n5l94i47f0dp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY-hCZyuuT6snLUuPYOAzdW6RAXjARzgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338202131263-lduoetlhcgu9frkq2lh2n5l94i47f0dp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
