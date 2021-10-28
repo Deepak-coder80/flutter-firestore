@@ -30,9 +30,9 @@ class CardView extends StatelessWidget {
                         .toUpperCase()),
                   ),
                 ),
-                Text((snapshot.docs[index]['timestamp'] == null)
-                    ? ""
-                    : snapshot.docs[index]['timestamp'].toString()),
+                snapshot.docs[index]['timestamp'] != null
+                    ? Text(snapshot.docs[index]['timestamp'].toString())
+                    : const Text('Null'),
               ],
             ),
           ),
