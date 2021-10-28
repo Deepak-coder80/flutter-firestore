@@ -13,15 +13,30 @@ class CardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ListTile(
-          title: Text(snapshot.docs[index]['title']),
-          subtitle: Text(snapshot.docs[index]['description']),
-          leading: CircleAvatar(
-            radius: 34,
-            child:
-                Text(snapshot.docs[index]['title'].toString()[0].toUpperCase()),
+        Container(
+          height: 150,
+          child: Card(
+            margin: const EdgeInsets.all(10),
+            elevation: 5,
+            child: Column(
+              children: [
+                ListTile(
+                  title: Text(snapshot.docs[index]['title']),
+                  subtitle: Text(snapshot.docs[index]['description']),
+                  leading: CircleAvatar(
+                    radius: 34,
+                    child: Text(snapshot.docs[index]['title']
+                        .toString()[0]
+                        .toUpperCase()),
+                  ),
+                ),
+                Text((snapshot.docs[index]['timestamp'] == null)
+                    ? ""
+                    : snapshot.docs[index]['timestamp'].toString()),
+              ],
+            ),
           ),
-        )
+        ),
         //Text(snapshot.docs[index]['title']),
       ],
     );
