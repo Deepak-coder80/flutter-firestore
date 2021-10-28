@@ -14,9 +14,12 @@ class CardView extends StatelessWidget {
     return Column(
       children: [
         ListTile(
+          title: Text(snapshot.docs[index]['title']),
+          subtitle: Text(snapshot.docs[index]['description']),
           leading: CircleAvatar(
             radius: 34,
-            child: Text(snapshot.docs[index]['title'].toString()[0]),
+            child:
+                Text(snapshot.docs[index]['title'].toString()[0].toUpperCase()),
           ),
         )
         //Text(snapshot.docs[index]['title']),
