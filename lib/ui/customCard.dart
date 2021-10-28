@@ -12,7 +12,15 @@ class CardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [Text("title")],
+      children: [
+        ListTile(
+          leading: CircleAvatar(
+            radius: 34,
+            child: Text(snapshot.docs[index]['title'].toString()[0]),
+          ),
+        )
+        //Text(snapshot.docs[index]['title']),
+      ],
     );
   }
 }
