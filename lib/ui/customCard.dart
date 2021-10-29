@@ -14,7 +14,7 @@ class CardView extends StatelessWidget {
   Widget build(BuildContext context) {
     var timeToDate = DateTime.fromMillisecondsSinceEpoch(
         snapshot.docs[index]['timestamp'].seconds * 1000);
-    var dateFormatted = DateFormat("EEEE,MM d,y").format(timeToDate);
+    var dateFormatted = DateFormat("EEEE,MM,y").format(timeToDate);
     return Column(
       children: [
         Container(
