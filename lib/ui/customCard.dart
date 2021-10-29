@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CardView extends StatelessWidget {
   final QuerySnapshot snapshot;
@@ -13,7 +14,7 @@ class CardView extends StatelessWidget {
   Widget build(BuildContext context) {
     var timeToDate = DateTime.fromMillisecondsSinceEpoch(
         snapshot.docs[index]['timestamp'].seconds * 1000);
-    var dateFormatted = DateFormat();
+    var dateFormatted = DateFormat("EEEE,MM d,y").format(timeToDate);
     return Column(
       children: [
         Container(
@@ -33,9 +34,7 @@ class CardView extends StatelessWidget {
                         .toUpperCase()),
                   ),
                 ),
-                snapshot.docs[index]['timestamp'] != null
-                    ? Text(snapshot.docs[index]['timestamp'].toString())
-                    : const Text('Null'),
+                Text(dateFormatted),
               ],
             ),
           ),
