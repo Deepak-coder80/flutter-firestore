@@ -13,6 +13,9 @@ class CardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController nameInputController = TextEditingController();
+    TextEditingController titleInputController = TextEditingController();
+    TextEditingController descriptionController = TextEditingController();
     var docId = snapshot.docs[index].id;
     var timeToDate = DateTime.fromMillisecondsSinceEpoch(
         snapshot.docs[index]['timestamp'].seconds * 1000);
@@ -50,7 +53,69 @@ class CardView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            contentPadding: const EdgeInsets.all(10),
+                            content: Column(
+                              children: [
+                                const Text("Please fill out the form"),
+                                Expanded(
+                                  child: TextField(
+                                    autofocus: true,
+                                    autocorrect: true,
+                                    decoration: const InputDecoration(
+                                      labelText: "Your name",
+                                    ),
+                                    controller: nameInputController,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: TextField(
+                                    autofocus: true,
+                                    autocorrect: true,
+                                    decoration: const InputDecoration(
+                                      labelText: "title",
+                                    ),
+                                    controller: titleInputController,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: TextField(
+                                    autofocus: true,
+                                    autocorrect: true,
+                                    decoration: const InputDecoration(
+                                      labelText: "description",
+                                    ),
+                                    controller: descriptionController,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            actions: [
+                              // ignore: deprecated_member_use
+                              FlatButton(
+                                onPressed: () {
+                                  nameInputController.clear();
+                                  titleInputController.clear();
+                                  descriptionController.clear();
+                                  Navigator.pop(context);
+                                },
+                                child: const Text("Cancel"),
+                              ),
+                              // ignore: deprecated_member_use
+                              FlatButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  "Save",
+                                  style: TextStyle(color: Colors.purple),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },
                       icon: const Icon(
                         FontAwesomeIcons.edit,
                         size: 15,
