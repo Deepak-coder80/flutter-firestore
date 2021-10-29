@@ -41,7 +41,7 @@ class _BoardAppState extends State<BoardApp> {
         stream: FirebaseFirestore.instance.collection('board').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           }
           return ListView.builder(
               itemCount: snapshot.data!.docs.length,

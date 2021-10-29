@@ -13,9 +13,13 @@ class CardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameInputController = TextEditingController();
-    TextEditingController titleInputController = TextEditingController();
-    TextEditingController descriptionController = TextEditingController();
+    var snpdata = snapshot.docs[index];
+    TextEditingController nameInputController =
+        TextEditingController(text: snpdata['name']);
+    TextEditingController titleInputController =
+        TextEditingController(text: snpdata['title']);
+    TextEditingController descriptionController =
+        TextEditingController(text: snpdata['description']);
     var docId = snapshot.docs[index].id;
     var timeToDate = DateTime.fromMillisecondsSinceEpoch(
         snapshot.docs[index]['timestamp'].seconds * 1000);
