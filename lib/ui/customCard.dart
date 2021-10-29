@@ -34,12 +34,15 @@ class CardView extends StatelessWidget {
                         .toUpperCase()),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text("By:${snapshot.docs[index]['name']} "),
-                    Text(dateFormatted),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text("By:${snapshot.docs[index]['name']} "),
+                      Text(dateFormatted),
+                    ],
+                  ),
                 ),
               ],
             ),
