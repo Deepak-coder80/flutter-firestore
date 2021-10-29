@@ -110,7 +110,19 @@ class CardView extends StatelessWidget {
                               ),
                               // ignore: deprecated_member_use
                               FlatButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  FirebaseFirestore.instance
+                                      .collection('board')
+                                      .doc(docId)
+                                      .update({
+                                    'name': nameInputController.text.toString(),
+                                    'title':
+                                        titleInputController.text.toString(),
+                                    'description':
+                                        descriptionController.text.toString(),
+                                    'timestamp': DateTime.now()
+                                  }).then((value) => Navigator.pop(context));
+                                },
                                 child: const Text(
                                   "Save",
                                   style: TextStyle(color: Colors.purple),
